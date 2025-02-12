@@ -258,7 +258,7 @@ class DataLoaderLite:
 
         assert split in ("train", "val")
 
-        data_root = os.path.join(__file__, "edu_fineweb10B")
+        data_root = os.path.join(os.path.dirname(__file__), "edu_fineweb10B")
 
         shards = os.listdir(data_root)
         shards = [s for s in shards if split in s]
