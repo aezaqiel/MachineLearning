@@ -80,7 +80,9 @@ if use_mp:
                 # split the document into whatever fits in this shard; the remainder goes to next one
                 remainder = shard_size - token_count
                 progress_bar.update(remainder)
-                all_tokens_np[token_count : token_count + remainder] = tokens[:remainder]
+                all_tokens_np[token_count : token_count + remainder] = tokens[
+                    :remainder
+                ]
                 write_datafile(filename, all_tokens_np)
                 shard_index += 1
                 progress_bar = None
@@ -91,7 +93,9 @@ if use_mp:
         # write any remaining tokens as the last shard
         if token_count != 0:
             split = "val" if shard_index == 0 else "train"
-            filename = os.path.join(DATA_CACHE_DIR, f"edufineweb_{split}_{shard_index:06d}")
+            filename = os.path.join(
+                DATA_CACHE_DIR, f"edufineweb_{split}_{shard_index:06d}"
+            )
             write_datafile(filename, all_tokens_np[:token_count])
 else:
     # tokenize all documents and write output shards, each of shard_size tokens (last shard has remainder)
