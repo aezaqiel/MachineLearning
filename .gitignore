@@ -1,3 +1,4 @@
 hf/
 .ruff_cache
 fineweb/edu_fineweb10B/
+*__pycache__/
